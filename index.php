@@ -10,16 +10,6 @@
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
  $this->need('header.php');
 ?>
-<div class="index-about">
-    <i> <?php $this->options->description() ?> </i>
-</div>
-<div class="index-container">
-    <div class="index-left">
-        <?php $this->need('nav.php') ?>
-        <div class="index-about-mobile">
-            <i> <?php $this->options->description() ?> </i>
-        </div>
-    </div>
     <div class="index-middle">
         <div class="post-preview-container" style="min-height: <%- config.per_page * 72 %>px">
             <?php while($this->next()): ?>
