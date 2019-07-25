@@ -8,44 +8,27 @@
  * @link https://limxw.com
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
- $this->need('h.php');
+ $this->need('header.php');
 ?>
 <div class="post-preview-container" style="min-height: <%- config.per_page * 72 %>px">
-    <% page.posts.each(function(post){ %>
+    <?php while($this->next()): ?>
     <div class="post-preview">
-        <div class="post-time"><%= post.date.format(config.date_format) %></div>
+        <div class="post-time"><?php $this->date(); ?></div>
         <div class="post-info">
-            <a href="<%- config.root %><%- post.path %>">
+            <a href="<?php $this->permalink(); ?>">
                 <h3>
-                    <%- (post.title || "Untitled").replace(/[<>&"]/g,function(c){
-                        return {'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c];
-                    }) %>
+                <?php $this->title() ?>
                 </h3>
             </a>
-            <p>
-                <% if (post.tags.length){
-                    console.log(post.tags)
-                %>
+            <p class="tag">
                 <span>/</span>
-                <% post.tags.forEach(function(tag){ %>
-                <a class="tag" href="<%= config.root %>tags/#<%= tag.name %>" title="<%= tag.name %>"><%= tag.name %></a>
-                <span>/</span>
-                <% }) %>
-                <% } %>
+                <?php $this->tags('', true, 'none'); ?>
             </p>
         </div>
     </div>
-    <% }); %>
+    <?php endwhile; ?>
 </div>
 <ul class="pager">
-    <% if (page.prev){ %>
-    <li class="previous">
-        <a href="<%- config.root %><%- page.prev_link %>">&larr; Newer Posts</a>
-    </li>
-    <% } %>
-    <% if (page.next){ %>
-    <li class="next">
-        <a href="<%- config.root %><%- page.next_link %>">Older Posts &rarr;</a>
-    </li>
-    <% } %>
+    <?php $this->pageNav('&larr; Newer Posts', 'Older Posts &rarr;'); ?>
 </ul>
+<?php $this->need('footer.php'); ?>
