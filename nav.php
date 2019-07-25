@@ -1,8 +1,8 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <div class="nav" id="nav">
     <div class="avatar-name">
-        <div class="avatar <% if(config.avatar_style && config.avatar_style.radius) {%>radius<% } %>">
-            <img src="<%= config['root'] %><%= config['sidebar-avatar'] %>" />
+        <div class="avatar <?php if($this->options->avatar_style == 'circular'): ?> radius<?php endif; ?>">
+            <img src="<?php $this->options->avatar_url(); ?>" />
         </div>
         <div class="name">
             <i><?php $this->options->thename(); ?></i>
