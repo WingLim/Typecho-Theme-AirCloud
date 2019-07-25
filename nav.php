@@ -1,67 +1,39 @@
-
+<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <div class="nav" id="nav">
     <div class="avatar-name">
         <div class="avatar <% if(config.avatar_style && config.avatar_style.radius) {%>radius<% } %>">
             <img src="<%= config['root'] %><%= config['sidebar-avatar'] %>" />
         </div>
         <div class="name">
-            <i><%= config.author %></i>
+            <i><?php $this->options->thename(); ?></i>
         </div>
     </div>
     <div class="contents" id="nav-content">
         <ul>
-            <li <% if(is_home()){ %> <%- "class=active" %> <% } %>>
-                <a href="<%= url_for(config.home_dir || '/') %>">
+            <li <?php if($this->is('index')): ?> class="active" <?php endif; ?>>
+                <a href="<?php $this->options->siteUrl(); ?>">
                     <i class="iconfont icon-shouye1"></i>
-                    <span><%= __('nav.home') %></span>
+                    <span>主页</span>
                 </a>
             </li>
-            <li <% if(is_current('tags')){ %> <%- "class=active" %> <% } %>>
-                <a href="<%= url_for(config.tag_dir) %>">
-                    <i class="iconfont icon-biaoqian1"></i>
-                    <span><%= __('nav.tags') %></span>
-                </a>
-            </li>
-            <li <% if(is_current('archive')){ %> <%- "class=active" %> <% } %>>
-                <a href="<%= url_for(config.archive_dir) %>">
+            <li <?php if($this->is('page','archives')): ?> class="active" <?php endif; ?>>
+                <a href="/archives.html">
                     <i class="iconfont icon-guidang2"></i>
-                    <span><%= __('nav.archives') %></span>
+                    <span>归档</span>
                 </a>
             </li>
-            <li <% if(is_current('about')){ %> <%- "class=active" %> <% } %>>
-                <a href="<%= config.root %><%- 'about/' %>">
+            <li <?php if($this->is('page','about')): ?> class="active" <?php endif; ?>>
+                <a href="/about.html">
                     <i class="iconfont icon-guanyu2"></i>
-                    <span><%= __('nav.about') %></span>
+                    <span>关于</span>
                 </a>
             </li>
-            <%if(config.search && config.search.path){%>
             <li>
                 <a id="search">
                     <i class="iconfont icon-sousuo1"></i>
-                    <span><%= __('nav.search') %></span>
+                    <span>搜索</span>
                 </a>
             </li>
-            <% } %>
         </ul>
-    </div>
-    <%
-        if(is_post()){
-        // if(/[0-9]*\/[0-9]*\/[0-9]*\//.test(path)){
-    %>
-        <%- partial('./toc', {item: page, index: false}) %>
-    <% } %>
-</div>
-
-
-<div class="search-field" id="search-field">
-    <div class="search-container">
-        <div class="search-input">
-            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
-            <input id="search-input"/>
-            <span id="begin-search"><%= __('search.search') %></span>
-        </div>
-        <div class="search-result-container" id="search-result-container">
-
-        </div>
     </div>
 </div>
