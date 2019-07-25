@@ -13,5 +13,12 @@ function themeConfig($form) {
         ),
         'square', _t('头像显示模式'), _t('默认方形'));
     $form->addInput($avatar_style);
+
+    $indent = new Typecho_Widget_Helper_Form_Element_Radio('indent',
+        array('able' => _t('启用'),
+            'disable' => _t('关闭'),
+        ),
+        'able', _t('首行缩进'), _t('文章页面首行缩进两个汉字'));
+    $form->addInput($indent);
 }
 ?>
