@@ -15,7 +15,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 </div>
 <div class="index-container">
     <div class="index-left">
-        <?php $this->need(nav.php) ?>
+        <?php $this->need('nav.php') ?>
         <div class="index-about-mobile">
             <i> <?php $this->options->description() ?> </i>
         </div>
