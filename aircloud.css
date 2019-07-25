@@ -1235,3 +1235,6 @@ pre .javascript .function {
   text-indent: 0;
 }
 /*# sourceMappingURL=aircloud.css.map */
+.tag a:after{
+  content: ' /';
+}
