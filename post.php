@@ -1,0 +1,39 @@
+
+
+
+<div class="post-container">
+    <div class="post-title">
+        <%- page.title.replace(/[<>&"]/g,function(c){
+            return {'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c];
+        }) %>
+    </div>
+
+    <div class="post-meta">
+        <span class="attr"><%= __('post.postTime') %>：<span><%- page.date.format(config.date_format) +" "+ page.date.format(config.time_format)%></span></span>
+        <% if (page.tags.length){ %>
+        <span class="attr"><%= __('post.tags') %>：/
+        <% page.tags.forEach(function(tag){ %>
+        <a class="tag" href="<%= config.root %>tags/#<%= tag.name %>" title="<%= tag.name %>"><%= tag.name %></a>
+        <span>/</span>
+        <% }) %>
+        <% } %>
+        </span>
+        <span class="attr"><%= __('post.visit') %>：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content <% if(config.post_style && !config.post_style.indent) {%>no-indent<% } %>">
+        <%- page.content %>
+        <% if(config.donate){%>
+            <%- partial('_partial/donate', null, {cache: false}) %>
+        <% } %>
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
