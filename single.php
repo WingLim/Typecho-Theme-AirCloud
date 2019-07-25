@@ -7,6 +7,7 @@ $this->need('header.php');
             <div class="post-title">
                 <?php $this->title() ?>
             </div>
+            <?php if($this->is('post')): ?>
             <div class="post-meta">
                 <span class="attr">发布于：<span><?php $this->date() ?></span></span>
                 <span class="attr tag">标签：/
@@ -14,6 +15,7 @@ $this->need('header.php');
                 </span>
                 <span class="attr">访问：<span id="busuanzi_value_page_pv"></span></span>
             </div>
+            <?php endif;?>
             <div class="post-content<?php if($this->options->indent == 'disable'): ?> no-indent<?php endif; ?>">
                 <?php $this->content(); ?>
                 <br />
