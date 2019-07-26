@@ -144,3 +144,32 @@ if(!toc || !toc.children || !toc.children[0]){
     })
 }
 
+// back to top
+var d = document.getElementById("top");
+var threshold = 100
+function toggle(){
+    if (document.documentElement.scrollTop > threshold){
+        d.style.display = 'block'
+    } else {
+        d.style.display = 'none'
+    }
+}
+function scroll(a, b) {
+	needScrollTop = b - a, _currentY = a, setTimeout(function() {
+		const c = Math.ceil(needScrollTop / 10);
+		_currentY += c, window.scrollTo({
+			left: _currentY,
+			top: a,
+			behavior: "smooth"
+		}), needScrollTop > 10 || -10 > needScrollTop ? scroll(_currentY, b) : window.scrollTo({
+			left: _currentY,
+			top: b,
+			behavior: "smooth"
+		})
+	}, 1)
+}
+window.addEventListener('scroll', toggle);   
+d.addEventListener("click",function (e) {
+    e.preventDefault();
+    scroll(window.pageYOffset, 0)
+})

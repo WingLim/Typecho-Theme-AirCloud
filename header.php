@@ -20,12 +20,10 @@
 
         <!-- Custom CSS -->
         <link rel="stylesheet" href="<?php $this->options->themeUrl('aircloud.css'); ?>">
-        <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
         <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
-        <!-- ga & ba script hoook -->
-        <script></script>
     </head>
     <body>
+        <div class="backToTop" id="top" title="返回顶部">返回顶部</div>
         <div class="site-nav-toggle" id="site-nav-toggle">
         <button>
             <span class="btn-bar"></span>
