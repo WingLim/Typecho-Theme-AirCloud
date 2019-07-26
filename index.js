@@ -198,8 +198,10 @@ load.addEventListener("click", function (e) {
                 } else {
                     load.remove() // if no more articles, remove the button
                 }
-                container.appendChild(postlist[0])
-                //console.log(postlist[0])
+                var count = postlist.length
+                for (var i=0; i < count; i++){
+                    container.appendChild(postlist[0])
+                }
             } 
         }
     }
