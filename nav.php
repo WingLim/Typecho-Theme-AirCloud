@@ -36,4 +36,7 @@
             </li>
         </ul>
     </div>
+    <?php if($this->is('post')): ?>
+        <?php getCatalog(); ?>
+    <?php endif;?>
 </div>
