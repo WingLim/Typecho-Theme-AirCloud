@@ -145,13 +145,13 @@ if(!toc || !toc.children || !toc.children[0]){
 }
 
 // back to top
-var d = document.getElementById("top");
-var threshold = 100
+const topButton = document.getElementById("top");
+const threshold = 100
 function toggle(){
     if (document.documentElement.scrollTop > threshold){
-        d.style.display = 'block'
+        topButton.style.display = 'block'
     } else {
-        d.style.display = 'none'
+        topButton.style.display = 'none'
     }
 }
 function scroll(a, b) {
@@ -169,37 +169,37 @@ function scroll(a, b) {
 	}, 1)
 }
 window.addEventListener('scroll', toggle);   
-d.addEventListener("click",function (e) {
+topButton.addEventListener("click",function (e) {
     e.preventDefault();
     scroll(window.pageYOffset, 0)
 })
 
 // load more articles
-var load = document.getElementsByClassName('next')[0]
+const load = document.getElementsByClassName('next')[0]
 if (load != undefined){
 load.addEventListener("click", function (e) {
     e.preventDefault() // prevent <a> default action
-    var ajax = new XMLHttpRequest()
-    var parser = new DOMParser()
+    let ajax = new XMLHttpRequest()
+    let parser = new DOMParser()
     load.innerText = "正在努力加载"
-    var href = load.href
+    let href = load.href
     if (href != undefined) {
         ajax.open('get', href)
         ajax.send()
         ajax.onreadystatechange = function () {
             if (ajax.readyState==4 && ajax.status==200){
                 load.innerText = "加载更多文章"
-                var data = parser.parseFromString(ajax.responseText, "text/html") // parse String to dom 
-                var postlist = data.getElementsByClassName("post-preview")
-                var container = document.getElementsByClassName("post-preview-container")[0]
-                var newhref = data.getElementsByClassName('next')[0]
+                let data = parser.parseFromString(ajax.responseText, "text/html") // parse String to dom 
+                let postlist = data.getElementsByClassName("post-preview")
+                let container = document.getElementsByClassName("post-preview-container")[0]
+                let newhref = data.getElementsByClassName('next')[0]
                 if (newhref != undefined) {
                     href = newhref.href
                 } else {
                     load.remove() // if no more articles, remove the button
                 }
-                var count = postlist.length
-                for (var i=0; i < count; i++){
+                let count = postlist.length
+                for (let i=0; i < count; i++){
                     container.appendChild(postlist[0])
                 }
             } 
