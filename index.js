@@ -176,6 +176,7 @@ d.addEventListener("click",function (e) {
 
 // load more articles
 var load = document.getElementsByClassName('next')[0]
+if (load != undefined){
 load.addEventListener("click", function (e) {
     e.preventDefault() // prevent <a> default action
     var ajax = new XMLHttpRequest()
@@ -191,11 +192,16 @@ load.addEventListener("click", function (e) {
                 var data = parser.parseFromString(ajax.responseText, "text/html") // parse String to dom 
                 var postlist = data.getElementsByClassName("post-preview")
                 var container = document.getElementsByClassName("post-preview-container")[0]
+                var newhref = data.getElementsByClassName('next')[0]
+                if (newhref != undefined) {
+                    href = newhref.href
+                } else {
+                    load.remove() // if no more articles, remove the button
+                }
                 container.appendChild(postlist[0])
                 //console.log(postlist[0])
             } 
         }
-    } else {
-        load.remove() // if no more articles, remove the button
     }
 })
+}
