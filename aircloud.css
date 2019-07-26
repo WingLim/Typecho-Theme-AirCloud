@@ -381,21 +381,14 @@ body {
   height: 40px;
   padding-left: 0;
   display: flex;
-}
-.pager .previous {
-  flex: 1;
-  display: flex;
-  flex-direction: row;
-  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
 }
 .pager .next {
-  flex: 1;
-  display: flex;
-  flex-direction: row-reverse;
   cursor: pointer;
 }
-.pager .previous a,
-.pager .next a {
+.pager a {
   box-sizing: border-box;
   cursor: pointer;
   transition: color 0.4s, background-color 0.4s;
@@ -408,8 +401,7 @@ body {
   text-align: center;
   text-decoration: none;
 }
-.pager .previous a:hover,
-.pager .next a:hover {
+.pager a:hover {
   color: white;
   cursor: pointer;
   background-color: #666666;

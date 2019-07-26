@@ -173,3 +173,30 @@ d.addEventListener("click",function (e) {
     e.preventDefault();
     scroll(window.pageYOffset, 0)
 })
+
+// load more articles
+var load = document.getElementsByClassName('next')[0]
+load.addEventListener("click", function (e) {
+    e.preventDefault()
+    var ajax = new XMLHttpRequest()
+    var parser = new DOMParser()
+    load.innerText = "正在努力加载"
+    var href = load.href
+    if (href != undefined) {
+        ajax.open('get', href)
+        ajax.send()
+        ajax.onreadystatechange = function () {
+            if (ajax.readyState==4 && ajax.status==200){
+                load.innerText = "加载更多文章"
+                var data = parser.parseFromString(ajax.responseText, "text/html")
+                var postlist = data.getElementsByClassName("post-preview")
+                var container = document.getElementsByClassName("post-preview-container")[0]
+                container.appendChild(postlist[0])
+                //console.log(postlist[0])
+            } else {
+                load.remove()
+            }
+        }
+    }
+    return false;
+})

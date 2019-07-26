@@ -27,8 +27,5 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         </div>
         <?php endwhile; ?>
     </div>
-    <ul class="pager">
-        <?php $this->pageNav('&larr; Newer Posts', 'Older Posts &rarr;'); ?>
-    </ul>
 </div>
 <?php $this->need('footer.php'); ?>

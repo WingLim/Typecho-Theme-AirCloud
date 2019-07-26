@@ -1,5 +1,8 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-</div>
+        </div>
+        </div>
+        <div class="pager" id="load_more">
+            <?php $this->pageLink('加载更多文章','next'); ?>
         </div>
         <footer class="footer">
         <p>&copy; <?php echo date('Y'); ?> <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a></p>

@@ -15,7 +15,7 @@ $this->need('header.php');
             </span>
             <span class="attr">访问：<span id="busuanzi_value_page_pv"></span></span>
         </div>
-        <?php endif;?>
+        <?php endif; ?>
         <div class="post-content<?php if($this->options->indent == 'disable'): ?> no-indent<?php endif; ?>">
             <?php $this->content(); ?>
             <br />
