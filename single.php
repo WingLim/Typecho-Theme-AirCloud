@@ -11,7 +11,7 @@ $this->need('header.php');
         <div class="post-meta">
             <span class="attr">发布于：<span><?php $this->date() ?></span></span>
             <span class="attr tag">标签：/
-                <?php $this->tags('', true, 'none'); ?>
+                <?php $this->tags('', true, '<a>none</a>'); ?>
             </span>
             <span class="attr">访问：<span id="busuanzi_value_page_pv"></span></span>
         </div>
