@@ -5,7 +5,7 @@
             <img src="<?php $this->options->avatar_url(); ?>" />
         </div>
         <div class="name">
-            <i><?php $this->options->thename(); ?></i>
+            <i><?php $this->options->thename != ''?$this->options->thename():Typecho_Widget::widget('Widget_Users_Admin')->screenName();?></i>
         </div>
     </div>
     <div class="contents" id="nav-content">

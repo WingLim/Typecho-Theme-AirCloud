@@ -1,7 +1,7 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 function themeConfig($form) {
-	$thename = new Typecho_Widget_Helper_Form_Element_Text('thename', NULL, NULL, _t('NAV用户名'), _t('Lim'));
+	$thename = new Typecho_Widget_Helper_Form_Element_Text('thename', NULL, NULL, _t('首页用户名自定义'), _t('默认管理员昵称'));
     $form->addInput($thename);
     
     $avatar_url = new Typecho_Widget_Helper_Form_Element_Text('avatar_url', NULL, NULL, _t('头像地址'), NULL);
