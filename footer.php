@@ -5,5 +5,6 @@
             <p>Power By <a href="https://typecho.org/" target="_blank">Typecho</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
         </footer>
         <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <script src="<?php $this->options->themeUrl('index.js'); ?>"></script>
     </body>
 </html>

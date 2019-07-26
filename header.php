@@ -26,13 +26,20 @@
         <script></script>
     </head>
     <body>
-    <div class="index-about">
-        <i> <?php $this->options->description() ?> </i>
-    </div>
-    <div class="index-container">
-        <div class="index-left">
-            <?php $this->need('nav.php') ?>
-            <div class="index-about-mobile">
-                <i> <?php $this->options->description() ?> </i>
-            </div>
+        <div class="site-nav-toggle" id="site-nav-toggle">
+        <button>
+            <span class="btn-bar"></span>
+            <span class="btn-bar"></span>
+            <span class="btn-bar"></span>
+        </button>
         </div>
+        <div class="index-about">
+            <i> <?php $this->options->description() ?> </i>
+        </div>
+        <div class="index-container">
+            <div class="index-left">
+                <?php $this->need('nav.php') ?>
+                <div class="index-about-mobile">
+                    <i> <?php $this->options->description() ?> </i>
+                </div>
+            </div>
