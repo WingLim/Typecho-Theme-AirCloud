@@ -177,7 +177,7 @@ d.addEventListener("click",function (e) {
 // load more articles
 var load = document.getElementsByClassName('next')[0]
 load.addEventListener("click", function (e) {
-    e.preventDefault()
+    e.preventDefault() // prevent <a> default action
     var ajax = new XMLHttpRequest()
     var parser = new DOMParser()
     load.innerText = "正在努力加载"
@@ -188,15 +188,14 @@ load.addEventListener("click", function (e) {
         ajax.onreadystatechange = function () {
             if (ajax.readyState==4 && ajax.status==200){
                 load.innerText = "加载更多文章"
-                var data = parser.parseFromString(ajax.responseText, "text/html")
+                var data = parser.parseFromString(ajax.responseText, "text/html") // parse String to dom 
                 var postlist = data.getElementsByClassName("post-preview")
                 var container = document.getElementsByClassName("post-preview-container")[0]
                 container.appendChild(postlist[0])
                 //console.log(postlist[0])
-            } else {
-                load.remove()
-            }
+            } 
         }
+    } else {
+        load.remove() // if no more articles, remove the button
     }
-    return false;
 })
