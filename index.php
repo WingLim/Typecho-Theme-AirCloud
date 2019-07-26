@@ -21,7 +21,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 </a>
                 <p class="tag">
                     <span>/</span>
-                    <?php $this->tags('', true, 'none'); ?>
+                    <?php $this->tags('', true, '<a>none</a>'); ?>
                 </p>
             </div>
         </div>
