@@ -200,10 +200,39 @@ load.addEventListener("click", function (e) {
                 }
                 let count = postlist.length
                 for (let i=0; i < count; i++){
+                    postlist[0].classList.add("post-up")
                     container.appendChild(postlist[0])
                 }
             } 
         }
     }
 })
+}
+
+
+window.TypechoComment = {
+	dom: function(a) {
+		return document.getElementById(a)
+	},
+	create: function(a, b) {
+		var d, c = document.createElement(a);
+		for (d in b) c.setAttribute(d, b[d]);
+		return c
+	},
+	reply: function(a, b, c, d) {
+		var e, g, h, i, j, k;
+		return pageid = a, e = this.dom(a), e.parentNode, g = this.dom(document.getElementById("hf").innerText), h = this.dom("comment-parent"), i = "form" == g.tagName ? g : g.getElementsByTagName("form")[0], j = g.getElementsByTagName("textarea")[0], null == h && (h = this.create("input", {
+			type: "hidden",
+			name: "parent",
+			id: "comment-parent"
+		}), i.appendChild(h)), h.setAttribute("value", b), null == this.dom("comment-form-place-holder") && (k = this.create("div", {
+			id: "comment-form-place-holder"
+		}), g.parentNode.insertBefore(k, g)), e.appendChild(g), this.dom("cancel-comment-reply-link").parentNode.style.display = "", document.getElementsByClassName("reply-name")[0].innerText = c, null != j && "text" == j.name && j.focus(), commentPage = d.split("#")[0] + "?c=a", reply = 1, !1
+	},
+	cancelReply: function() {
+		var a = this.dom(document.getElementById("hf").innerText),
+			b = this.dom("comment-form-place-holder"),
+			c = this.dom("comment-parent");
+		return null != c && c.parentNode.removeChild(c), null == b ? !0 : (this.dom("cancel-comment-reply-link").parentNode.style.display = "none", commentPage = commentPageLink, b.parentNode.insertBefore(a, b), reply = 0, !1)
+	}
 }

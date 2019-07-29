@@ -19,14 +19,8 @@ $this->need('header.php');
         <div class="post-content<?php if($this->options->indent == 'disable'): ?> no-indent<?php endif; ?>">
             <?php $this->content(); ?>
             <br />
-            <div id="comment-container">
-            </div>
-            <div id="disqus_thread"></div>
-
-            <div id="lv-container">
-            </div>
-
         </div>
+        <?php $this->need('comment.php'); ?>
     </div>
 </div>
 <?php $this->need('footer.php'); ?>

@@ -392,19 +392,19 @@ body {
   box-sizing: border-box;
   cursor: pointer;
   transition: color 0.4s, background-color 0.4s;
-  border: 1px solid #999999;
+  
   line-height: 40px;
   width: 150px;
   height: 40px;
   font-size: 18px;
-  color: #999999;
+  color: #d2d2d2;
   text-align: center;
   text-decoration: none;
 }
 .pager a:hover {
-  color: white;
+  color: #999999;
   cursor: pointer;
-  background-color: #666666;
+
 }
 @media screen and (max-width: 680px) {
   .post-preview-container {
@@ -1248,4 +1248,108 @@ pre .javascript .function {
     cursor: pointer;
     opacity: .6;
     filter: Alpha(opacity=60);
+}
+.post-up {
+    animation: upin .6s;
+    -webkit-animation: upin .8s ease;
+}
+@keyframes upin{0%{opacity:0;transform:translateY(30px)}
+100%{opacity:1;transform:translateY(0)}
+}
+.comments {
+    position: relative;
+    animation: upin .3s;
+    -webkit-animation: upin .5s ease;
+}
+#comment-form {
+    margin-top: 20px;
+}
+#textarea, #submit, .text {
+    padding: .5em;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid rgba(0,0,0,.1);
+    font-size: .875em;
+    word-wrap: break-word;
+    outline: 0;
+    -webkit-appearance: none;
+    background: #fff;
+    border-radius: 5px;
+}
+#textarea {
+    width: 100%;
+}
+.text {
+    width: 25%;
+    margin-right: 1%;
+}
+#submit {
+    width: 22%;
+    cursor: pointer;
+}
+#submit:hover {
+    background:rgba(0,0,0,.98);
+    color: #fff
+}
+.comment-input {
+    display: flex;
+}
+#textarea:focus, .text:focus {
+    border-color:#939090;outline:0
+}
+.comment-list {
+    list-style: none;
+}
+#hf {
+    display: none;
+}
+.cancel-comment-reply {
+    height: 30px;
+    line-height: 30px;
+    background: #fff;
+    padding: 0 30px 0 10px;
+    position: absolute;
+    right: 10px;
+    top: -20px;
+    pointer-events: none;
+    max-width: calc(100% - 20px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,.02);
+    border: 1px solid rgba(0,0,0,.1);
+}
+#cancel-comment-reply-link {
+    pointer-events: all;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 30px;
+    text-align: center;
+    width: 30px;
+    line-height: 28px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-weight: 700;
+    color: #9a9a9a;
+}
+.comments .author_name, .comments a {
+    line-height: 20px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #999999;
+}
+.comments a:hover{
+    color: #4990E2;
+}
+.comment-time {
+    opacity: .5;
+    font-size: 10px;
+}
+.comment-reply {
+    font-size: 14px;
 }

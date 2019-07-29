@@ -75,4 +75,49 @@ function getCatalog() {    //输出文章目录容器
     }
     echo $index;
 }
+
+function getCommentAt($coid){
+	$db   = Typecho_Db::get();
+	$prow = $db->fetchRow($db->select('parent')
+		->from('table.comments')
+		->where('coid = ? AND status = ?', $coid, 'approved'));
+	$parent = $prow['parent'];
+	if ($parent != "0") {
+		$arow = $db->fetchRow($db->select('author','status')
+			->from('table.comments')
+			->where('coid = ?', $parent));
+		$author = $arow['author'];
+		$status = $arow['status'];
+		if($author){
+			if($status=='approved'){
+				$href   = ' <a class="at" uid="'.$parent.'" onclick="scrollt(\'comment-'.$parent.'\'); return false;">@'.$author.'</a>';
+			}else if($status=='waiting'){
+				$href   = '<a href="javascript:void(0)">评论审核中···</a>';
+			}
+		}
+		echo $href;
+	} else {
+		echo "";
+	}
+}
+
+function timesince($older_date,$comment_date = false) {
+	$chunks = array(
+		array(86400 , '天'),
+		array(3600 , '小时'),
+		array(60 , '分钟'),
+		array(1 , '秒'),
+	);
+	$newer_date = time();
+	$since = abs($newer_date - $older_date);
+
+	for ($i = 0, $j = count($chunks); $i < $j; $i++){
+		$seconds = $chunks[$i][0];
+		$name = $chunks[$i][1];
+		if (($count = floor($since / $seconds)) != 0) break;
+	}
+	$output = $count.$name;
+
+	return $output;
+}
 ?>

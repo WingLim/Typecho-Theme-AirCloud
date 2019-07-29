@@ -4,7 +4,7 @@
  *
  * @package AirCloud
  * @author WingLim
- * @version 1.0
+ * @version 2.0
  * @link https://limxw.com
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
