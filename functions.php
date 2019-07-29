@@ -7,6 +7,9 @@ function themeConfig($form) {
     $avatar_url = new Typecho_Widget_Helper_Form_Element_Text('avatar_url', NULL, NULL, _t('头像地址'), NULL);
     $form->addInput($avatar_url);
 
+    $beian = new Typecho_Widget_Helper_Form_Element_Text('beian', NULL, NULL, _t('备案号'), NULL);
+    $form->addInput($beian);
+
     $avatar_style = new Typecho_Widget_Helper_Form_Element_Radio('avatar_style',
         array('square' => _t('方形'),
             'circular' => _t('圆形'),
