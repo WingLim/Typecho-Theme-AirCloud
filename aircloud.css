@@ -387,12 +387,9 @@ body {
 }
 .pager .next {
   cursor: pointer;
-}
-.pager a {
   box-sizing: border-box;
   cursor: pointer;
   transition: color 0.4s, background-color 0.4s;
-  
   line-height: 40px;
   width: 150px;
   height: 40px;
@@ -401,7 +398,7 @@ body {
   text-align: center;
   text-decoration: none;
 }
-.pager a:hover {
+.pager .next:hover {
   color: #999999;
   cursor: pointer;
 
@@ -1073,6 +1070,9 @@ body {
   text-indent: 0;
 }
 /*# sourceMappingURL=aircloud.css.map */
+.tag a:before {
+    content: ' ';
+  }
 .tag a:after {
   content: ' /';
 }
@@ -1137,7 +1137,7 @@ body {
     cursor: pointer;
 }
 #submit:hover {
-    background:rgba(0,0,0,.98);
+    background: #4a4a4a;
     color: #fff
 }
 .comment-input {
@@ -1190,7 +1190,7 @@ body {
     line-height: 20px;
     margin-bottom: 10px;
     text-decoration: none;
-    color: #999999;
+    color: #4a4a4a;
 }
 .comments a:hover{
     color: #4990E2;

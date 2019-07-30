@@ -2,7 +2,7 @@
         </div>
         </div>
         <?php if($this->is('index')): ?>
-        <div class="pager" id="load_more">
+        <div class="pager">
             <?php $this->pageLink('加载更多文章','next'); ?>
         </div>
         <?php endif; ?>
