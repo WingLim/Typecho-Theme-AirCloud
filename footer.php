@@ -15,5 +15,11 @@
         </footer>
         <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <script src="<?php $this->options->themeUrl('index.js'); ?>"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script>
+        <script src="<?php $this->options->themeUrl('highlightjs-line-numbers.js'); ?>"></script>
+        <script>
+        hljs.initHighlightingOnLoad();
+        hljs.initLineNumbersOnLoad();
+        </script>
     </body>
 </html>
