@@ -455,23 +455,12 @@ body {
   .pager {
     width: 100%;
     height: 40px;
-    padding-left: 10px;
-    padding-right: 10px;
     display: flex;
-  }
-  .pager .previous {
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    cursor: pointer;
   }
   .pager .next {
-    flex: 1;
-    display: flex;
     flex-direction: row-reverse;
     cursor: pointer;
   }
-  .pager .previous a,
   .pager .next a {
     box-sizing: border-box;
     cursor: pointer;
@@ -485,7 +474,6 @@ body {
     text-align: center;
     text-decoration: none;
   }
-  .pager .previous a:hover,
   .pager .next a:hover {
     color: white;
     cursor: pointer;
