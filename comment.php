@@ -53,15 +53,15 @@ echo $commentClass;
             <textarea rows="8" cols="50" name="text" id="textarea" class="textarea" required ><?php $this->remember('text'); ?></textarea>
             <div class="comment-input">
                 <?php if($this->user->hasLogin()): ?>
-                <p><?php _e('登录身份: '); ?><a href="<?php $this->options->profileUrl(); ?>"><?php $this->user->screenName(); ?></a>. <a href="<?php $this->options->logoutUrl(); ?>" title="Logout"><?php _e('退出'); ?> &raquo;</a></p>
+                <p class="anu"><?php _e('登录身份: '); ?><a href="<?php $this->options->profileUrl(); ?>"><?php $this->user->screenName(); ?></a> | <a href="<?php $this->options->logoutUrl(); ?>" title="Logout"><?php _e('退出'); ?> &raquo;</a></p>
                 <?php else: ?>
                 <input type="text" name="author" id="author" class="text" placeholder="Name *" value="<?php $this->remember('author'); ?>" required />
                 <label for="mail"<?php if ($this->options->commentsRequireMail): ?> class="required"<?php endif; ?>></label>
                 <input type="mail" name="mail" id="mail" class="text" placeholder="Mail *" value="<?php $this->remember('mail'); ?>"<?php if ($this->options->commentsRequireMail): ?> required<?php endif; ?> />
                 <label for="url"<?php if ($this->options->commentsRequireURL): ?> class="required"<?php endif; ?>></label>
                 <input type="url" name="url" id="url" class="text" placeholder="Url" value="<?php $this->remember('url'); ?>"<?php if ($this->options->commentsRequireURL): ?> required<?php endif; ?> />
-                <input name="submit" type="submit" id="submit" class="submit" value=<?php _e('提交评论'); ?> />
                 <?php endif; ?>
+                <input name="submit" type="submit" id="submit" class="submit" value=<?php _e('提交评论'); ?> />
             </div>
     	</form>
     </div>
