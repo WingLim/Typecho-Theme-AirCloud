@@ -1093,6 +1093,7 @@ body {
     cursor: pointer;
     opacity: .6;
     filter: Alpha(opacity=60);
+    z-index: 999;
 }
 .post-up {
     animation: upin .6s;
