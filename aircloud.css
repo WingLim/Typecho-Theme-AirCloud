@@ -1094,6 +1094,7 @@ body {
     position: relative;
     animation: upin .3s;
     -webkit-animation: upin .5s ease;
+    margin-bottom: 30px;
 }
 #comment-form {
     margin-top: 20px;
