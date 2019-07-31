@@ -9,7 +9,7 @@ $this->need('header.php');
         </div>
         <?php if($this->is('post')): ?>
         <div class="post-meta">
-            <span class="attr">发布于：<span><?php $this->date() ?></span></span>
+            <span class="attr">发布于：<span><?php echo timesince($this->created) ?>前</span></span>
             <span class="attr tag">标签：/
                 <?php $this->tags('', true, '<a>none</a>'); ?>
             </span>
