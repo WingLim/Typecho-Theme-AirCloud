@@ -650,6 +650,7 @@ body {
 .post-content pre {
   text-indent: 0;
   padding: 0;
+  white-space: pre-wrap;
 }
 .post-content pre code {
   line-height: 175%;
@@ -1273,8 +1274,9 @@ body {
     padding-left: 10px;
     padding-right: 10px;
     color: #869194;
-    text-align: right;
+    text-align: center;
     background-color: #eff2f3;
+    vertical-align: top;
 }
 .hljs-ln-code {
     padding-left: 10px;
