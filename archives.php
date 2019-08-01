@@ -27,9 +27,9 @@ $this->need('header.php');
                 <div class="one-tag-list">
                     <span class="fa fa-calendar-times-o listing-seperator" id="'. $year .'">
                         <span class="tag-text">'. $year .'</span>
-                    </span><ul>'; //输出年份   
+                    </span><ul>';   
             }   
-            $output .= '<li><span>'.date('m-d',$archives->created).'</span><a href="'.$archives->permalink .'"><span>'. $archives->title .'</span></a></li>'; //输出文章日期和标题   
+            $output .= '<li><span>'.date('m-d',$archives->created).'</span><a href="'.$archives->permalink.'"><span>'. $archives->title .'</span></a></li>'; //输出文章日期和标题   
         endwhile;   
         $output .= '</ul></li></ul>';
         echo $output;

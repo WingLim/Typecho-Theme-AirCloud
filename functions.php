@@ -162,7 +162,7 @@ $cacheFile = new cacheFile();
 $output = "";
 $vowels = array("[", "{","]","}","<",">","\r\n", "\r", "\n","-","'",'"','`'," ",":",";",'\\',"   ","	");
 
-Typecho_Widget::widget('Widget_Contents_Post_Recent')->to($archives);
+Typecho_Widget::widget('Widget_Contents_Post_Recent','pageSize=10000')->to($archives);
 while($archives->next()):
     $output .= '{"this":"post","link":"'.$archives->permalink.'","title":"'.$archives->title.'","text":"'.str_replace($vowels, "",$archives->text).'"},';
 endwhile;
