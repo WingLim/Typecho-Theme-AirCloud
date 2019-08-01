@@ -208,7 +208,7 @@ load.addEventListener("click", function (e) {
 })
 }
 
-
+// comment reply
 window.TypechoComment = {
 	dom: function(a) {
 		return document.getElementById(a)
@@ -236,6 +236,7 @@ window.TypechoComment = {
 	}
 }
 
+// ajax submit comment
 submitButton = document.getElementById("submit")
 if (submitButton != undefined){
     submitButton.addEventListener("click", function (e) {
@@ -301,11 +302,13 @@ function ajaxSubmit(){
     }
 }
 
+// instant search
 const searchButton = document.getElementById('search')
 const searchField = document.getElementById('search-field')
 const searchInput = document.getElementById('search-input')
 const escSearch = document.getElementById('esc-search')
 searchButton.addEventListener('click', () => {
+    search_a("/usr/themes/aircloud/caches/cache.json");
     toggleSeachField()
 });
 escSearch.addEventListener('click',() => {
@@ -316,6 +319,12 @@ function toggleSeachField(){
         showSearchField()
     } else {
         hideSearchField()
+    }
+}
+
+window.onkeydown = (e) => {
+    if (e.which === 27) {
+        toggleSeachField()
     }
 }
 
@@ -331,8 +340,7 @@ function hideSearchField(){
     searchField.classList.remove('show-flex-fade');
 }
 
-var QueryStorage = [];//json储存器
-search_a("/usr/themes/aircloud/caches/cache.json");
+var QueryStorage = []; // save json
 
 var otxt = document.getElementById("search-input"), list = document.getElementById("search-result-container"), Record = list.innerHTML;
 
@@ -344,7 +352,7 @@ document.all ? otxt.onpropertychange = function() {
 
 function search_a(val){
     var _xhr=new XMLHttpRequest();
-    _xhr.open("GET",val,true);  //以get方式获取
+    _xhr.open("GET",val,true);  // use "get" method to get information
     _xhr.setRequestHeader("Content-Type","application/json");
     _xhr.setRequestHeader("X-Requested-With","XMLHttpRequest");
     _xhr.send(val);
@@ -352,14 +360,13 @@ function search_a(val){
         if(_xhr.readyState==4&&_xhr.status==200){
             json=_xhr.responseText;
             if(json!=""){
-                    QueryStorage=JSON.parse(json);//将$json转化为json格式
+                QueryStorage=JSON.parse(json);// transfer data to json
             };
         };
     };
 }
 
-//增加函数 filter
-
+// add a function filter
 if (!Object.values) Object.values = function(obj) {
     if (obj !== Object(obj))
         throw new TypeError('Object.values called on a non-object');
@@ -372,25 +379,22 @@ if (!Object.values) Object.values = function(obj) {
     return val;
 }
 
-function a(a) {
+function jumpto(a) {
     document.getElementById("Ty").href = a.getAttribute("href"), document.getElementById("Ty").click();
 }
 
 function query(a, b, c) {
-    var n, o, p, q, d = "", e = "", f = "", g = "", h = "", i = '<div class="ins-selectable ins-search-item" onclick="a(this)" href="', j = '<section class="ins-section"><header class="ins-section-header">', k = "</header>", l = "</section>", m = Cx(a, b);
+    var n, o, p, q, d = "", e = "", f = "", g = "", h = "", i = '<div class="ins-selectable ins-search-item" onclick="jumpto(this)" href="', j = '<section class="ins-section"><header class="ins-section-header">', k = "</header>", l = "</section>", m = Cx(a, b);
     for (n = 0; n < Object.keys(m).length; n++) switch (o = m[n].this) {
       case "post":
         e = e + i + m[n].link + '"><header>' + m[n].title + '</header><p class="ins-search-preview">' + m[n].comments + m[n].text + "</p></div>";
         break;
-
       case "tag":
         f = f + i + m[n].link + '"><header>' + m[n].title + '<span class="ins-slug">' + m[n].text + "</span></header></div>";
         break;
-
       case "category":
         g = g + i + m[n].link + '"><header>' + m[n].title + '<span class="ins-slug">' + m[n].text + "</span></header></div>";
         break;
-
       case "page":
         h = h + i + m[n].link + '"><header>' + m[n].title + '</header><p class="ins-search-preview">' + m[n].comments + m[n].text + "</p></div>";
     }

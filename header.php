@@ -20,7 +20,7 @@
 
         <!-- Custom CSS -->
         <link rel="stylesheet" href="<?php $this->options->themeUrl('aircloud.css'); ?>">
-        <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+        <link href="//at.alicdn.com/t/font_1329505_es3gyys4oyf.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <div class="backToTop" id="top" title="返回顶部">返回顶部</div>

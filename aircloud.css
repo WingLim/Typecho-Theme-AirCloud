@@ -67,7 +67,7 @@ html::-webkit-scrollbar-track-piece {
   display: flex !important;
 }
 .hide-flex-fade {
-  animation: hideFade 0.4s forwards;
+  animation: hideFade 1.0s forwards;
 }
 @keyframes showFade {
   from {
@@ -224,11 +224,11 @@ html::-webkit-scrollbar-track-piece {
     color: #999999;
     cursor: pointer;
     top: 50%;
-    right: 6px;
-    width: 36px;
-    height: 36px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
     font-size: 16px;
-    margin-top: -18px;
+    margin-top: -10px;
     position: absolute;
     text-align: center;
     display: inline-block;

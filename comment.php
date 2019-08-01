@@ -27,7 +27,7 @@ echo $commentClass;
 	<p>
 		<span class="commentator-name"><strong class="author_name"><?php $comments->author(); ?></strong><?php getCommentAt($comments->coid); ?></span>
         <span class="comment-time"><?php echo timesince($comments->created); ?>前</span>
-        <span class="comment-reply"><a class="reply" onclick="return TypechoComment.reply('comment-<?php $comments->coid();?>', <?php $comments->coid();?>, '@<?php echo $comments->author; ?>','<?php $comments->permalink(); ?>');" href="javascript:void(0)" rel="nofollow">回复</a></span>
+        <span class="comment-reply"><a class="reply" onclick="return TypechoComment.reply('comment-<?php $comments->coid();?>', <?php $comments->coid();?>, '@<?php echo $comments->author; ?>','<?php $comments->permalink(); ?>');" href="javascript:void(0)" rel="nofollow"><i class="iconfont icon-comment"></i></a></span>
 	</p>
 </div>
 	<div class="comment-chat" data-link="<?php $comments->permalink(); ?>">
