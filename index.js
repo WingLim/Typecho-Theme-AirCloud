@@ -308,7 +308,7 @@ const searchField = document.getElementById('search-field')
 const searchInput = document.getElementById('search-input')
 const escSearch = document.getElementById('esc-search')
 searchButton.addEventListener('click', () => {
-    search_a("/usr/themes/aircloud/caches/cache.json");
+    search_a("/usr/themes/AirCloud/caches/cache.json");
     toggleSeachField()
 });
 escSearch.addEventListener('click',() => {
@@ -387,16 +387,16 @@ function query(a, b, c) {
     var n, o, p, q, d = "", e = "", f = "", g = "", h = "", i = '<div class="ins-selectable ins-search-item" onclick="jumpto(this)" href="', j = '<section class="ins-section"><header class="ins-section-header">', k = "</header>", l = "</section>", m = Cx(a, b);
     for (n = 0; n < Object.keys(m).length; n++) switch (o = m[n].this) {
       case "post":
-        e = e + i + m[n].link + '"><header>' + m[n].title + '</header><p class="ins-search-preview">' + m[n].comments + m[n].text + "</p></div>";
+        e = e + i + m[n].link + '"><header><i class="iconfont icon-file"></i>' + m[n].title + '</header><p class="ins-search-preview">' + m[n].comments + m[n].text + "</p></div>";
         break;
       case "tag":
-        f = f + i + m[n].link + '"><header>' + m[n].title + '<span class="ins-slug">' + m[n].text + "</span></header></div>";
+        f = f + i + m[n].link + '"><header><i class="iconfont icon-tag"></i>' + m[n].title + '<span class="ins-slug">' + m[n].text + "</span></header></div>";
         break;
       case "category":
-        g = g + i + m[n].link + '"><header>' + m[n].title + '<span class="ins-slug">' + m[n].text + "</span></header></div>";
+        g = g + i + m[n].link + '"><header><i class="iconfont icon-floder"></i>' + m[n].title + '<span class="ins-slug">' + m[n].text + "</span></header></div>";
         break;
       case "page":
-        h = h + i + m[n].link + '"><header>' + m[n].title + '</header><p class="ins-search-preview">' + m[n].comments + m[n].text + "</p></div>";
+        h = h + i + m[n].link + '"><header><i class="iconfont icon-file"></i>' + m[n].title + '</header><p class="ins-search-preview">' + m[n].comments + m[n].text + "</p></div>";
     }
     e && (d = d + j + "文章" + k + e + l), h && (d = d + j + "页面" + k + h + l), g && (d = d + j + "分类" + k + g + l), 
     f && (d = d + j + "标签" + k + f + l), p = document.getElementById("search-result-container"), 

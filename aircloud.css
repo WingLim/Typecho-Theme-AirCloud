@@ -56,6 +56,7 @@ to{opacity:0;display:none!important}
 .ins-section .ins-search-item .ins-search-preview,.ins-section .ins-search-item div.header{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 .ins-section .ins-search-item .ins-search-preview{height:18px;font-size:12px;color:#9a9a9a!important;margin:5px 0 0 20px}
 .ins-section .ins-search-item.active,.ins-section .ins-search-item:hover{color:#fff!important;background:#006bde}
+#search-result-container .iconfont{margin-right: 4px}
 #esc-search:hover{color:#006bde}
 @media screen and (max-width:680px){.search-field .search-container{min-width:0;width:100%;height:100%;margin:0}
 .search-field .search-result-container{height:calc(100vh - 50px)}
