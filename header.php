@@ -7,8 +7,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="<?php $this->options->description() ?>">
         <meta name="keyword"  content="<?php $this->options->keywords() ?>">
-        <!--<link rel="shortcut icon" href="<%= config.root %>img/favicon.ico">-->
-
         <title>
         <?php $this->archiveTitle(array(
                 'category'  =>  _t('分类 %s 下的文章'),

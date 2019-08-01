@@ -160,29 +160,29 @@ class cacheFile
 $TheFile = dirname(__FILE__).'/caches/cache.json';
 $cacheFile = new cacheFile();
 $output = "";
-$vowels = array("[", "{","]","}","<",">","\r\n", "\r", "\n","-","'",'"','`'," ",":",";",'\\',"   ");
+$vowels = array("[", "{","]","}","<",">","\r\n", "\r", "\n","-","'",'"','`'," ",":",";",'\\',"   ","	");
 
 Typecho_Widget::widget('Widget_Contents_Post_Recent')->to($archives);
-    while($archives->next()):
-    $output .= '{"this":"post","link":"'.$archives->permalink.'","title":"'.$archives->title.'","comments":"'.$archives->commentsNum0.'","text":"'.str_replace($vowels, "",$archives->text).'"},';
-    endwhile;
+while($archives->next()):
+    $output .= '{"this":"post","link":"'.$archives->permalink.'","title":"'.$archives->title.'","text":"'.str_replace($vowels, "",$archives->text).'"},';
+endwhile;
 
 Typecho_Widget::widget('Widget_Contents_Page_List')->to($pages);
-    while($pages->next()):
-    $output .= '{"this":"page","link":"'.$pages->permalink.'","title":"'.$pages->title.'","comments":"'.$pages->commentsNum0.'","text":"'.str_replace($vowels, "",$pages->text).'"},';
-    endwhile;
+while($pages->next()):
+    $output .= '{"this":"page","link":"'.$pages->permalink.'","title":"'.$pages->title.'","text":"'.str_replace($vowels, "",$pages->text).'"},';
+endwhile;
 
 Typecho_Widget::widget('Widget_Metas_Tag_Cloud')->to($tags); 
-   while ($tags->next()):
-   $output .= '{"this":"tag","link":"'.$tags->permalink.'","title":"'.$tags->name.'","comments":"0","text":"'.str_replace($vowels, "",$tags->description).'"},';
-   endwhile;
+while ($tags->next()):
+   $output .= '{"this":"tag","link":"'.$tags->permalink.'","title":"'.$tags->name.'","text":"'.str_replace($vowels, "",$tags->description).'"},';
+endwhile;
 
 Typecho_Widget::widget('Widget_Metas_Category_List')->to($category); 
-   while ($category->next()):
-   $output .= '{"this":"category","link":"'.$category->permalink.'","title":"'.$category->name.'","comments":"0","text":"'.str_replace($vowels, "",$category->description).'"},';
-   endwhile;
+while ($category->next()):
+   $output .= '{"this":"category","link":"'.$category->permalink.'","title":"'.$category->name.'","text":"'.str_replace($vowels, "",$category->description).'"},';
+endwhile;
 
-    $output = substr($output,0,strlen($output)-1);
+$output = substr($output,0,strlen($output)-1);
 
 $data = '['.$output.']';
 if (file_exists($TheFile)) {
