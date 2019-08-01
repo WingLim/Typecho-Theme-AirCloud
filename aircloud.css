@@ -11,6 +11,17 @@ body {
   margin-left: calc(100vw - 100%) !important;
   -webkit-text-size-adjust: none;
 }
+html::-webkit-scrollbar {
+    width: 10px;
+    height: 6px;
+}
+html::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: #A5A5A5;
+}
+html::-webkit-scrollbar-track-piece {
+    background: #eee;
+}
 .red {
   color: red;
 }
@@ -1055,9 +1066,6 @@ body {
     display: none;
   }
 }
-.gitment-comment p {
-  text-indent: 0;
-}
 /*# sourceMappingURL=aircloud.css.map */
 .tag a:before {
     content: ' ';
@@ -1091,10 +1099,12 @@ body {
 @keyframes upin{0%{opacity:0;transform:translateY(30px)}
 100%{opacity:1;transform:translateY(0)}
 }
-.comments {
+.comments, .comment-respond {
     position: relative;
     animation: upin .3s;
     -webkit-animation: upin .5s ease;
+}
+.comments {
     margin-bottom: 30px;
 }
 #comment-form {
@@ -1179,7 +1189,6 @@ body {
 }
 .comments .author_name, .comments a {
     line-height: 20px;
-    margin-bottom: 10px;
     text-decoration: none;
     color: #4a4a4a;
 }

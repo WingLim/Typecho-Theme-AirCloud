@@ -27,7 +27,7 @@ echo $commentClass;
 	<p>
 		<span class="commentator-name"><strong class="author_name"><?php $comments->author(); ?></strong><?php getCommentAt($comments->coid); ?></span>
         <span class="comment-time"><?php echo timesince($comments->created); ?>前</span>
-        <span class="comment-reply"><a class="reply" onclick="return TypechoComment.reply('comment-<?php $comments->coid();?>', <?php $comments->coid();?>, '@<?php echo $comments->author; ?>','<?php $comments->permalink(); ?>');" href="javascript:void(0)" rel="nofollow" data-theid="comment-<?php $comments->coid();?>">回复</a></span>
+        <span class="comment-reply"><a class="reply" onclick="return TypechoComment.reply('comment-<?php $comments->coid();?>', <?php $comments->coid();?>, '@<?php echo $comments->author; ?>','<?php $comments->permalink(); ?>');" href="javascript:void(0)" rel="nofollow">回复</a></span>
 	</p>
 </div>
 	<div class="comment-chat" data-link="<?php $comments->permalink(); ?>">
@@ -43,7 +43,7 @@ echo $commentClass;
 	<?php }?>
 </li>
 <?php } ?>
-<div class="comments">
+<div class="comments" id="comments">
     <span id="hf"><?php $this->respondId() ?></span>
     <?php $this->comments()->to($comments); ?>
     <?php if($this->allow('comment')): ?>
@@ -61,7 +61,7 @@ echo $commentClass;
                 <label for="url"<?php if ($this->options->commentsRequireURL): ?> class="required"<?php endif; ?>></label>
                 <input type="url" name="url" id="url" class="text" placeholder="Url" value="<?php $this->remember('url'); ?>"<?php if ($this->options->commentsRequireURL): ?> required<?php endif; ?> />
                 <?php endif; ?>
-                <input name="submit" type="submit" id="submit" class="submit" value=<?php _e('提交评论'); ?> />
+                <input name="submit" type="submit" id="submit" class="submit" value=<?php _e('发射'); ?> />
             </div>
     	</form>
     </div>
@@ -69,9 +69,7 @@ echo $commentClass;
     <h3><?php _e('评论已关闭'); ?></h3>
     <?php endif; ?>
 
-    <?php if ($comments->have()): ?>
-	<h3 id="comments"><?php $this->commentsNum(_t('暂无回应'), _t('一条回应'), _t('%d 条回应')); ?></h3>
-    
+    <?php if ($comments->have()): ?>    
     <?php $comments->listComments(); ?>
     <?php $comments->pageNav('&laquo; 前一页', '后一页 &raquo;'); ?>
     

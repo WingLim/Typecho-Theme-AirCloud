@@ -180,7 +180,6 @@ if (load != undefined){
 load.addEventListener("click", function (e) {
     e.preventDefault() // prevent <a> default action
     let ajax = new XMLHttpRequest()
-    let parser = new DOMParser()
     load.innerText = "正在努力加载"
     let href = load.href
     if (href != undefined) {
@@ -189,7 +188,7 @@ load.addEventListener("click", function (e) {
         ajax.onreadystatechange = function () {
             if (ajax.readyState==4 && ajax.status==200){
                 load.innerText = "加载更多文章"
-                let data = parser.parseFromString(ajax.responseText, "text/html") // parse String to dom 
+                let data = (new DOMParser()).parseFromString(ajax.responseText, "text/html") // parse String to dom 
                 let postlist = data.getElementsByClassName("post-preview")
                 let container = document.getElementsByClassName("post-preview-container")[0]
                 let newhref = data.getElementsByClassName('next')[0]
@@ -233,6 +232,71 @@ window.TypechoComment = {
 		var a = this.dom(document.getElementById("hf").innerText),
 			b = this.dom("comment-form-place-holder"),
 			c = this.dom("comment-parent");
-		return null != c && c.parentNode.removeChild(c), null == b ? !0 : (this.dom("cancel-comment-reply-link").parentNode.style.display = "none", commentPage = commentPageLink, b.parentNode.insertBefore(a, b), reply = 0, !1)
+		return null != c && c.parentNode.removeChild(c), null == b ? !0 : (this.dom("cancel-comment-reply-link").parentNode.style.display = "none", b.parentNode.insertBefore(a, b), reply = 0, !1)
 	}
+}
+
+submitButton = document.getElementById("submit")
+if (submitButton != undefined){
+    submitButton.addEventListener("click", function (e) {
+        e.preventDefault()
+        ajaxSubmit()
+    })
+}
+function ajaxSubmit(){
+    function getValue(id) {
+        let dom = document.getElementById(id)
+        return dom ? encodeURI(dom.value) : ""
+    }
+    function finish() {
+        let replyform = document.getElementById(document.getElementById("hf").innerText),
+            holder = document.getElementById("comment-form-place-holder")
+        holder.parentNode.insertBefore(replyform, holder)
+    }
+    let commentForm = document.getElementById("comment-form"),
+        commentLink = commentForm.action,
+        parent = "",
+        ajax = new XMLHttpRequest,
+        commentList = document.getElementsByClassName("comment-list")[0]
+    let parentNode = document.getElementById("comment-parent")
+    if (parentNode != undefined) {
+        parent = parentNode.value
+    }
+    ajax.open("post", commentLink)
+    ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+    let submitdata = "author=" + getValue("author") + "&mail=" + getValue("mail") + "&url=" + getValue("url") + "&text=" + getValue("textarea") + "&parent=" + parent
+    ajax.send(submitdata)
+    submitButton.value = "寄出中..."
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState==4 && ajax.status==200){
+            let commentId = "comment-" + ajax.responseText.match(/id=\"?comment-\d+/g).join().match(/\d+/g).sort(function(a,b){ return b-a})[0]
+            let data = (new DOMParser()).parseFromString(ajax.responseText, "text/html")
+            let newComment = data.getElementById(commentId)
+            if (newComment.classList.contains("comment-child")){
+                parentComment = document.getElementById("comment-"+parent)
+                childrenComment = parentComment.getElementsByClassName("comment-children")[0]
+                if (childrenComment != undefined) {
+                    childrenCommentList = childrenComment.getElementsByClassName("comment-list")[0]
+                    childrenCommentList.appendChild(newComment)
+                    finish()
+                } else {
+                    newChildrenComment = data.getElementById(commentId).parentNode.parentNode
+                    parentComment.appendChild(newChildrenComment)
+                    finish()
+                }
+            } else {
+                if (commentList != undefined){
+                    let first = commentList.firstChild
+                    commentList.insertBefore(newComment,first)
+                    finish()
+                } else {
+                    commentList = data.getElementsByClassName("comment-list")[0]
+                    document.getElementById("comments").appendChild(commentList)
+                    finish()
+                }
+            }
+            document.getElementById("textarea").value = ""
+            submitButton.value = "发射"
+        }
+    }
 }
