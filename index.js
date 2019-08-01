@@ -300,3 +300,103 @@ function ajaxSubmit(){
         }
     }
 }
+
+const searchButton = document.getElementById('search')
+const searchField = document.getElementById('search-field')
+const searchInput = document.getElementById('search-input')
+const escSearch = document.getElementById('esc-search')
+searchButton.addEventListener('click', () => {
+    toggleSeachField()
+});
+escSearch.addEventListener('click',() => {
+    hideSearchField()
+})
+function toggleSeachField(){
+    if (!searchField.classList.contains('show-flex-fade')) {
+        showSearchField()
+    } else {
+        hideSearchField()
+    }
+}
+
+function showSearchField() {
+    searchInput.focus()
+    searchField.classList.add('show-flex-fade');
+    searchField.classList.remove('hide-flex-fade');
+}
+
+function hideSearchField(){
+    window.onkeydown = null;
+    searchField.classList.add('hide-flex-fade');
+    searchField.classList.remove('show-flex-fade');
+}
+
+var QueryStorage = [];//json储存器
+search_a("/usr/themes/aircloud/caches/cache.json");
+
+var otxt = document.getElementById("search-input"), list = document.getElementById("search-result-container"), Record = list.innerHTML;
+
+document.all ? otxt.onpropertychange = function() {
+    query(QueryStorage, otxt.value, Record);
+} : otxt.oninput = function() {
+    query(QueryStorage, otxt.value, Record);
+};
+
+function search_a(val){
+    var _xhr=new XMLHttpRequest();
+    _xhr.open("GET",val,true);  //以get方式获取
+    _xhr.setRequestHeader("Content-Type","application/json");
+    _xhr.setRequestHeader("X-Requested-With","XMLHttpRequest");
+    _xhr.send(val);
+    _xhr.onreadystatechange=function(){
+        if(_xhr.readyState==4&&_xhr.status==200){
+            json=_xhr.responseText;
+            if(json!=""){
+                    QueryStorage=JSON.parse(json);//将$json转化为json格式
+            };
+        };
+    };
+}
+
+//增加函数 filter
+
+if (!Object.values) Object.values = function(obj) {
+    if (obj !== Object(obj))
+        throw new TypeError('Object.values called on a non-object');
+    var val=[],key;
+    for (key in obj) {
+        if (Object.prototype.hasOwnProperty.call(obj,key)) {
+            val.push(obj[key]);
+        }
+    }
+    return val;
+}
+
+function a(a) {
+    document.getElementById("Ty").href = a.getAttribute("href"), document.getElementById("Ty").click();
+}
+
+function query(a, b, c) {
+    var n, o, p, q, d = "", e = "", f = "", g = "", h = "", i = '<div class="ins-selectable ins-search-item" onclick="a(this)" href="', j = '<section class="ins-section"><header class="ins-section-header">', k = "</header>", l = "</section>", m = Cx(a, b);
+    for (n = 0; n < Object.keys(m).length; n++) switch (o = m[n].this) {
+      case "post":
+        e = e + i + m[n].link + '"><header>' + m[n].title + '</header><p class="ins-search-preview">' + m[n].comments + m[n].text + "</p></div>";
+        break;
+
+      case "tag":
+        f = f + i + m[n].link + '"><header>' + m[n].title + '<span class="ins-slug">' + m[n].text + "</span></header></div>";
+        break;
+
+      case "category":
+        g = g + i + m[n].link + '"><header>' + m[n].title + '<span class="ins-slug">' + m[n].text + "</span></header></div>";
+        break;
+
+      case "page":
+        h = h + i + m[n].link + '"><header>' + m[n].title + '</header><p class="ins-search-preview">' + m[n].comments + m[n].text + "</p></div>";
+    }
+    e && (d = d + j + "文章" + k + e + l), h && (d = d + j + "页面" + k + h + l), g && (d = d + j + "分类" + k + g + l), 
+    f && (d = d + j + "标签" + k + f + l), p = document.getElementById("search-result-container"), 
+    q = document.getElementById("search-input"), p.innerHTML = "" == q.value ? c : d;
+}
+
+function Cx(arr,q){i=arr.filter(v=>Object.values(v).some(v=>new RegExp(q+'').test(v)));return i;}

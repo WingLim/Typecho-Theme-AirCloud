@@ -22,7 +22,7 @@
 ![](https://lim-1257884139.cos.ap-shanghai.myqcloud.com/images/20190731003442.png)
 
 ### TODO
-- [ ] 搜索功能
+- [x] 搜索功能
 
 - [x] 评论功能
 
