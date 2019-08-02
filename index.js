@@ -258,8 +258,12 @@ function ajaxSubmit(){
     ajax.open("post", commentLink)
     ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
     let submitdata = "author=" + getValue("author") + "&mail=" + getValue("mail") + "&url=" + getValue("url") + "&text=" + getValue("textarea") + "&parent=" + parent
-    ajax.send(submitdata)
-    submitButton.value = "寄出中..."
+    if(getValue("textarea") == ""){
+        document.getElementById("textarea").focus()
+    } else {
+        ajax.send(submitdata)
+        submitButton.value = "寄出中..."
+    }
     ajax.onreadystatechange = function () {
         if (ajax.readyState==4 && ajax.status==200){
             let commentId = "comment-" + ajax.responseText.match(/id=\"?comment-\d+/g).join().match(/\d+/g).sort(function(a,b){ return b-a})[0]
@@ -319,9 +323,9 @@ window.onkeydown = (e) => {
 }
 
 function showSearchField() {
-    searchInput.focus()
     searchField.classList.add('show-flex-fade');
     searchField.classList.remove('hide-flex-fade');
+    searchInput.focus()
 }
 
 function hideSearchField(){
