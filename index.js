@@ -11,7 +11,7 @@ window.onresize = () => {
 };
 
 // Nav switch function on mobile
-const navToggle = document.getElementById('site-nav-toggle');
+var navToggle = document.getElementById('site-nav-toggle');
 navToggle.addEventListener('click', () => {
     let aboutContent = document.getElementById('nav-content')
     if (!aboutContent.classList.contains('show-block')) {
@@ -38,9 +38,8 @@ function getDistanceOfLeft(obj) {
     };
 }
 
-var toc = document.getElementById('toc')
-
-var tocToTop = getDistanceOfLeft(toc).top;
+var toc = document.getElementById('toc'),
+    tocToTop = getDistanceOfLeft(toc).top
 
 function reHeightToc(){
     if(toc) { // resize toc height
@@ -49,11 +48,10 @@ function reHeightToc(){
     }
 }
 
-reHeightToc();
+reHeightToc()
 
-var result = []
-
-var nameSet = new Set();
+var result = [],
+    nameSet = new Set();
 
 if(!toc || !toc.children || !toc.children[0]){
     // do nothing
@@ -136,17 +134,14 @@ if(!toc || !toc.children || !toc.children[0]){
             }
         }
     }
-
-    reLayout()
-
-    window.addEventListener('scroll', function(e) {
-        reLayout()
+    window.addEventListener('scroll', function() {
+        if(toc) reLayout()
     })
 }
 
 // back to top
-const topButton = document.getElementById("top");
-const threshold = 100
+var topButton = document.getElementById("top"),
+    threshold = 100
 function toggle(){
     if (document.documentElement.scrollTop > threshold){
         topButton.style.display = 'block'
@@ -171,14 +166,14 @@ topButton.addEventListener("click",function (e) {
 })
 
 // load more articles
-const load = document.getElementsByClassName('next')[0]
-if (load != undefined){
+var load = document.getElementsByClassName('next')[0]
+if (load){
 load.addEventListener("click", function (e) {
     e.preventDefault() // prevent <a> default action
     let ajax = new XMLHttpRequest()
     load.innerText = "正在努力加载"
     let href = load.href
-    if (href != undefined) {
+    if (href) {
         ajax.open('get', href)
         ajax.send()
         ajax.onreadystatechange = function () {
@@ -188,7 +183,7 @@ load.addEventListener("click", function (e) {
                 let postlist = data.getElementsByClassName("post-preview")
                 let container = document.getElementsByClassName("post-preview-container")[0]
                 let newhref = data.getElementsByClassName('next')[0]
-                if (newhref != undefined) {
+                if (newhref) {
                     href = newhref.href
                 } else {
                     load.remove() // if no more articles, remove the button
@@ -233,8 +228,8 @@ window.TypechoComment = {
 }
 
 // ajax submit comment
-submitButton = document.getElementById("submit")
-if (submitButton != undefined){
+var submitButton = document.getElementById("submit")
+if (submitButton){
     submitButton.addEventListener("click", function (e) {
         e.preventDefault()
         ajaxSubmit()
@@ -248,6 +243,7 @@ function ajaxSubmit(){
     function finish() {
         let replyform = document.getElementById(document.getElementById("hf").innerText),
             holder = document.getElementById("comment-form-place-holder")
+        document.getElementById("cancel-comment-reply-link").parentNode.style.display = "none"
         holder.parentNode.insertBefore(replyform, holder)
     }
     let commentForm = document.getElementById("comment-form"),
@@ -256,7 +252,7 @@ function ajaxSubmit(){
         ajax = new XMLHttpRequest,
         commentList = document.getElementsByClassName("comment-list")[0]
     let parentNode = document.getElementById("comment-parent")
-    if (parentNode != undefined) {
+    if (parentNode) {
         parent = parentNode.value
     }
     ajax.open("post", commentLink)
@@ -272,7 +268,7 @@ function ajaxSubmit(){
             if (newComment.classList.contains("comment-child")){
                 parentComment = document.getElementById("comment-"+parent)
                 childrenComment = parentComment.getElementsByClassName("comment-children")[0]
-                if (childrenComment != undefined) {
+                if (childrenComment) {
                     childrenCommentList = childrenComment.getElementsByClassName("comment-list")[0]
                     childrenCommentList.appendChild(newComment)
                     finish()
@@ -282,14 +278,12 @@ function ajaxSubmit(){
                     finish()
                 }
             } else {
-                if (commentList != undefined){
+                if (commentList){
                     let first = commentList.firstChild
                     commentList.insertBefore(newComment,first)
-                    finish()
                 } else {
                     commentList = data.getElementsByClassName("comment-list")[0]
                     document.getElementById("comments").appendChild(commentList)
-                    finish()
                 }
             }
             document.getElementById("textarea").value = ""
@@ -299,10 +293,10 @@ function ajaxSubmit(){
 }
 
 // instant search
-const searchButton = document.getElementById('search')
-const searchField = document.getElementById('search-field')
-const searchInput = document.getElementById('search-input')
-const escSearch = document.getElementById('esc-search')
+var searchButton = document.getElementById('search'),
+    searchField = document.getElementById('search-field'),
+    searchInput = document.getElementById('search-input'),
+    escSearch = document.getElementById('esc-search')
 searchButton.addEventListener('click', () => {
     search_a("/usr/themes/AirCloud/caches/cache.json");
     toggleSeachField()
