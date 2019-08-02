@@ -59,6 +59,7 @@ to{opacity:0;display:none!important}
 .ins-section .ins-search-item.active,.ins-section .ins-search-item:hover{color:#fff!important;background:#006bde}
 #search-result-container .iconfont{margin-right:4px}
 #esc-search:hover{color:#006bde}
+.search-keyword{color:#555;font-size:14px;font-weight:700;}
 @media screen and (max-width:680px){.search-field .search-container{min-width:0;width:100%;height:100%;margin:0}
 .search-field .search-result-container{height:calc(100vh - 50px)}
 .nav{margin-top:50px;position:relative;top:0;width:100%}

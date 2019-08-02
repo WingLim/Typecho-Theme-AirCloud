@@ -377,11 +377,19 @@ function jumpto(a) {
     document.getElementById("Ty").href = a.getAttribute("href"), document.getElementById("Ty").click();
 }
 
+function mark(keyword, text) {
+    let first = text.search(keyword)
+    let position = 20 < first ? first-20 : 0
+	let afterReplace = text.replace(keyword, '<mark class="search-keyword"> ' + keyword + " </mark>")
+    let result = afterReplace.slice(position, position + 80)
+    return result
+}
+
 function query(a, b, c) {
     var n, o, p, q, d = "", e = "", f = "", g = "", h = "", i = '<div class="ins-selectable ins-search-item" onclick="jumpto(this)" href="', j = '<section class="ins-section"><header class="ins-section-header">', k = "</header>", l = "</section>", m = Cx(a, b);
     for (n = 0; n < Object.keys(m).length; n++) switch (o = m[n].this) {
       case "post":
-        e = e + i + m[n].link + '"><header><i class="iconfont icon-file"></i>' + m[n].title + '</header><p class="ins-search-preview">' + m[n].text + "</p></div>";
+        e = e + i + m[n].link + '"><header><i class="iconfont icon-file"></i>' + m[n].title + '</header><p class="ins-search-preview">' + mark(b, m[n].text) + "</p></div>";
         break;
       case "tag":
         f = f + i + m[n].link + '"><header><i class="iconfont icon-tag"></i>' + m[n].title + '<span class="ins-slug">' + m[n].text + "</span></header></div>";
@@ -390,7 +398,7 @@ function query(a, b, c) {
         g = g + i + m[n].link + '"><header><i class="iconfont icon-floder"></i>' + m[n].title + '<span class="ins-slug">' + m[n].text + "</span></header></div>";
         break;
       case "page":
-        h = h + i + m[n].link + '"><header><i class="iconfont icon-file"></i>' + m[n].title + '</header><p class="ins-search-preview">' + m[n].text + "</p></div>";
+        h = h + i + m[n].link + '"><header><i class="iconfont icon-file"></i>' + m[n].title + '</header><p class="ins-search-preview">' + mark(b, m[n].text) + "</p></div>";
     }
     e && (d = d + j + "文章" + k + e + l), h && (d = d + j + "页面" + k + h + l), g && (d = d + j + "分类" + k + g + l), 
     f && (d = d + j + "标签" + k + f + l), p = document.getElementById("search-result-container"), 
