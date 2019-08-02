@@ -10,7 +10,7 @@
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
  $this->need('header.php');
 ?>
-<div class="index-middle">
+<div class="index-middle" id="main">
     <div class="post-preview-container" style="min-height: <%- config.per_page * 72 %>px">
         <?php while($this->next()): ?>
         <div class="post-preview">

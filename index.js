@@ -155,18 +155,14 @@ function toggle(){
     }
 }
 function scroll(a, b) {
-	needScrollTop = b - a, _currentY = a, setTimeout(function() {
-		const c = Math.ceil(needScrollTop / 10);
-		_currentY += c, window.scrollTo({
-			left: _currentY,
-			top: a,
-			behavior: "smooth"
-		}), needScrollTop > 10 || -10 > needScrollTop ? scroll(_currentY, b) : window.scrollTo({
-			left: _currentY,
-			top: b,
-			behavior: "smooth"
-		})
-	}, 1)
+	needScrollTop = b - a, _currentY = a, "undefined" == typeof window.getComputedStyle(document.documentElement).scrollBehavior ? setTimeout(function() {
+		const a = Math.ceil(needScrollTop / 10);
+		_currentY += a, window.scrollTo(_currentY, b), needScrollTop > 10 || -10 > needScrollTop ? scroll(_currentY, b) : window.scrollTo(_currentY, b)
+	}, 1) : window.scrollTo({
+		left: _currentY,
+		top: b,
+		behavior: "smooth"
+	})
 }
 window.addEventListener('scroll', toggle);   
 topButton.addEventListener("click",function (e) {

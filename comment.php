@@ -43,7 +43,7 @@ echo $commentClass;
 	<?php }?>
 </li>
 <?php } ?>
-<div class="comments" id="comments">
+<div class="comments" id="comments" data-no-instant>
     <span id="hf"><?php $this->respondId() ?></span>
     <?php $this->comments()->to($comments); ?>
     <?php if($this->allow('comment')): ?>
