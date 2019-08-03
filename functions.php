@@ -24,6 +24,13 @@ function themeConfig($form) {
         'able', _t('首行缩进'), _t('文章页面首行缩进两个汉字'));
     $form->addInput($indent);
 }
+function themeConfigHandle($settings, $isInit) {
+    if ($settings['avatar_url']) {
+        $avatar_data = file_get_contents($settings['avatar_url']);
+        file_put_contents(dirname(__FILE__).'/avatar.png',$avatar_data);
+    }
+}
+
 
 function themeInit($archive) {
     if ($archive->is('single')) {

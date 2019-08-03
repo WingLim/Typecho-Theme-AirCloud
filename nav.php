@@ -2,7 +2,7 @@
 <div class="nav" id="nav">
     <div class="avatar-name">
         <div class="avatar <?php if($this->options->avatar_style == 'circular'): ?> radius<?php endif; ?>">
-            <img src="<?php $this->options->avatar_url(); ?>" />
+            <img src="<?php $this->options->themeUrl('avatar.png'); ?>" />
         </div>
         <div class="name">
             <i><?php $this->options->thename != ''?$this->options->thename():Typecho_Widget::widget('Widget_Users_Admin')->screenName();?></i>
