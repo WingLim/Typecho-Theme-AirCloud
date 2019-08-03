@@ -23,8 +23,8 @@ to{opacity:1}
 @keyframes hideFade{from{opacity:1}
 to{opacity:0;display:none!important}
 }
-.no-indent{text-indent:0!important}
-.no-indent h1,.no-indent h2,.no-indent h3,.no-indent h4,.no-indent h5,.no-indent h6,.no-indent ol,.no-indent p,.no-indent ul{text-indent:0!important}
+.indent{text-indent:2em!important}
+.indent h1,.indent h2,.indent h3,.indent h4,.indent h5,.indent h6,.indent ol,.indent p,.indent ul{text-indent:2em!important}
 .nav{position:relative;padding-top:50px;color:#333;width:100%;display:flex;flex-direction:column;align-items:center}
 .nav .avatar-name{display:flex;flex-direction:column;align-items:center;border-bottom:1px solid #979797}
 .nav .avatar-name .avatar{width:120px;height:120px;padding:10px;box-sizing:border-box}
@@ -115,16 +115,16 @@ to{opacity:0;display:none!important}
 .post-container .post-meta{text-align:center;margin-top:0;margin-bottom:20px}
 .post-container .post-meta a,.post-container .post-meta span{font-weight:300;color:#999;font-size:13px;text-decoration:none}
 .post-container .post-meta .attr{margin-right:5px;margin-left:5px}
-.post-content{line-height:20px;font-size:15px;text-indent:2em;color:#333;font-weight:300}
+.post-content{line-height:20px;font-size:15px;color:#333;font-weight:300}
 .post-content>table,.post-content>table tr td,.post-content>table tr th{border:1px solid #e7e8e9}
 .post-content table{border-collapse:collapse}
 .post-content blockquote{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin-left:2em;margin-right:2em;padding-left:0;padding-right:0}
 .post-content blockquote p{margin-top:10px;margin-bottom:10px;color:#666}
 .post-content a{text-decoration:none;color:#4990e2}
-.post-content p{color:#404040;font-size:14px;line-height:30px;text-indent:2em;letter-spacing:1px}
+.post-content p{color:#404040;font-size:14px;line-height:30px;letter-spacing:1px}
 .post-content p img{width:80%}
 .post-content ol,.post-content ul{padding-left:2em}
-.post-content ol li,.post-content ul li{list-style:none;color:#404040;font-size:14px;line-height:30px;text-indent:2em;letter-spacing:1px;margin-bottom:5px;margin-top:5px}
+.post-content ol li,.post-content ul li{list-style:none;color:#404040;font-size:14px;line-height:30px;letter-spacing:1px;margin-bottom:5px;margin-top:5px}
 .post-content ol li:before,.post-content ul li:before{content:'• '}
 .post-content pre{text-indent:0;padding:0;white-space:pre-wrap}
 .post-content pre code{line-height:175%}

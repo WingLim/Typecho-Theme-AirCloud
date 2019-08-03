@@ -10,25 +10,33 @@ function themeConfig($form) {
     $beian = new Typecho_Widget_Helper_Form_Element_Text('beian', NULL, NULL, _t('备案号'), NULL);
     $form->addInput($beian);
 
-    $avatar_style = new Typecho_Widget_Helper_Form_Element_Radio('avatar_style',
-        array('square' => _t('方形'),
-            'circular' => _t('圆形'),
-        ),
-        'square', _t('头像显示模式'), _t('默认方形'));
-    $form->addInput($avatar_style);
-
-    $indent = new Typecho_Widget_Helper_Form_Element_Radio('indent',
-        array('able' => _t('启用'),
-            'disable' => _t('关闭'),
-        ),
-        'able', _t('首行缩进'), _t('文章页面首行缩进两个汉字'));
-    $form->addInput($indent);
+    $theme_options = new Typecho_Widget_Helper_Form_Element_Checkbox('theme_options',
+    array('avatarCircular' => _t('头像圆形'),
+    'avatarCache' => _t('缓存头像'),
+    'indent' => _t('首行缩进')),
+    array('indent'), _t('其他功能')
+    );
+    $form->addInput($theme_options->multiMode());
 }
 function themeConfigHandle($settings, $isInit) {
+    $db = Typecho_Db::get();
+	$widget = Typecho_Widget::widget("Widget_Abstract_Options");
+	$theme = "AirCloud";
+    $options = Typecho_Widget::widget("Widget_Options");
+
+    if ($options->__get('theme:' . $theme)) {
+		$widget->update(array('value' => serialize($settings)), $db->sql()->where('name = ?', 'theme:' . $theme));
+	} else {
+		$widget->insert(array('name'  =>  'theme:' . $theme, 'value' =>  serialize($settings), 'user'  => 0));
+	}
     if ($settings['avatar_url']) {
-        $avatar_data = file_get_contents($settings['avatar_url']);
-        file_put_contents(dirname(__FILE__).'/avatar.png',$avatar_data);
-    }
+        if(!empty($settings['theme_options']) && in_array('avatarCache', $settings['theme_options'])){
+            $avatar_data = file_get_contents($settings['avatar_url']);
+            file_put_contents(dirname(__FILE__).'/avatar.png',$avatar_data);
+        }else{
+            unlink(dirname(__FILE__).'/avatar.png');
+        }
+    } 
 }
 
 

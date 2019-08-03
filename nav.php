@@ -1,8 +1,8 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <div class="nav" id="nav">
     <div class="avatar-name">
-        <div class="avatar <?php if($this->options->avatar_style == 'circular'): ?> radius<?php endif; ?>">
-            <img src="<?php $this->options->themeUrl('avatar.png'); ?>" />
+        <div class="avatar <?php if(!empty($this->options->theme_options) && in_array('avatarCircular', $this->options->theme_options)): ?>radius<?php endif; ?>">
+            <img src="<?php if(!empty($this->options->theme_options) && in_array('avatarCache', $this->options->theme_options)){$this->options->themeUrl('avatar.png');}else{$this->options->avatar_url();}?>" />
         </div>
         <div class="name">
             <i><?php $this->options->thename != ''?$this->options->thename():Typecho_Widget::widget('Widget_Users_Admin')->screenName();?></i>
